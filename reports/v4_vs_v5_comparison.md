@@ -24,34 +24,34 @@
 
 | Metric | v4 (Static) | v5 (Dynamic) | Improvement |
 |--------|:-----------:|:------------:|:-----------:|
-| Sharpe | 0.538 | 0.588 | +9.4% |
-| CAGR | 5.93% | 3.83% | -35.4% |
-| Max DD | -29.43% | -19.39% | -34.1% |
+| Sharpe | 0.534 | 0.574 | +7.3% |
+| CAGR | 5.89% | 3.73% | -36.6% |
+| Max DD | -29.57% | -20.14% | -31.9% |
 | Volatility | 12.09% | 6.79% | — |
-| Sortino | 0.627 | 0.743 | — |
-| Calmar | 0.20 | 0.20 | — |
-| Daily WR | 54.4% | 52.1% | — |
-| Monthly WR | 62.2% | 59.3% | — |
+| Sortino | 0.623 | 0.724 | — |
+| Calmar | 0.20 | 0.19 | — |
+| Daily WR | 54.5% | 52.4% | — |
+| Monthly WR | 62.2% | 58.7% | — |
 
 ## Out-of-Sample Performance
 
 | Metric | v4 (Static) | v5 (Dynamic) | Improvement |
 |--------|:-----------:|:------------:|:-----------:|
-| Sharpe | 1.110 | 1.117 | +0.6% |
-| CAGR | 8.08% | 6.62% | -18.1% |
-| Max DD | -6.07% | -3.85% | — |
-| Volatility | 7.24% | 5.89% | — |
-| Sortino | 1.321 | 1.319 | — |
-| Calmar | 1.33 | 1.72 | — |
-| Daily WR | 53.2% | 47.0% | — |
-| Monthly WR | 64.5% | 64.5% | — |
+| Sharpe | 1.141 | 1.194 | +4.6% |
+| CAGR | 8.49% | 7.24% | -14.8% |
+| Max DD | -6.30% | -4.18% | — |
+| Volatility | 7.38% | 6.01% | — |
+| Sortino | 1.366 | 1.412 | — |
+| Calmar | 1.35 | 1.73 | — |
+| Daily WR | 53.8% | 47.6% | — |
+| Monthly WR | 61.1% | 63.5% | — |
 
 ## Sharpe Degradation (IS → OOS)
 
 | Version | IS Sharpe | OOS Sharpe | Degradation |
 |---------|:---------:|:----------:|:-----------:|
-| v4 | 0.538 | 1.110 | -106.4% |
-| v5 | 0.588 | 1.117 | -89.9% |
+| v4 | 0.534 | 1.141 | -113.5% |
+| v5 | 0.574 | 1.194 | -108.1% |
 
 v5 shows **higher degradation** — the dynamic elements may be fitting to in-sample patterns.
 

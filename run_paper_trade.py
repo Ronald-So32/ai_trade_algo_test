@@ -225,6 +225,14 @@ def cmd_signals(broker, symbols: list[str], lookback_days: int = 504):
         logger.error("No market data returned. Check your symbols and API connection.")
         return {}
 
+    # Data completeness validation
+    min_days = 252 + 63  # TSMOM warmup (252d) + risk parity vol window (63d)
+    if len(prices_wide) < min_days:
+        logger.warning(
+            f"Only {len(prices_wide)} trading days returned (need {min_days} for "
+            f"v5 dynamic mode). Signal generator will fall back to static mode."
+        )
+
     elapsed = time.time() - t0
     logger.info(
         f"Data fetched: {prices_wide.shape[1]} symbols, "

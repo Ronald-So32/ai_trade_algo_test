@@ -170,7 +170,7 @@ class LiveSignalGenerator:
                 signals = strategy.generate_signals(prices_wide, returns_wide)
                 weights = strategy.compute_weights(signals, returns=returns_wide)
 
-                strat_ret = (weights.shift(1) * returns_wide).sum(axis=1)
+                strat_ret = (weights.shift(1) * returns_wide).sum(axis=1).fillna(0.0)
                 strategy_weights[name] = weights
                 strategy_returns[name] = strat_ret
 
@@ -186,6 +186,22 @@ class LiveSignalGenerator:
             return {}
 
         if self.mode == "dynamic":
+            # Warmup guard: risk parity and vol-managed leverage require
+            # at least 63 days of strategy returns for reliable vol estimates.
+            # Fall back to static mode if insufficient history.
+            min_history = max(RISK_PARITY_VOL_LOOKBACK, VOL_MANAGED_LOOKBACK)
+            has_enough = all(
+                len(ret.dropna()) >= min_history
+                for ret in strategy_returns.values()
+            )
+            if not has_enough:
+                lengths = {n: len(r.dropna()) for n, r in strategy_returns.items()}
+                logger.warning(
+                    f"  Insufficient history for dynamic mode (need {min_history} days): "
+                    f"{lengths}. Falling back to STATIC (v4) mode."
+                )
+                return self._combine_static(strategy_weights, common_cols)
+
             return self._combine_dynamic(
                 strategy_weights, strategy_returns, common_cols
             )
@@ -255,12 +271,11 @@ class LiveSignalGenerator:
                 combined += latest * rp_weights[name]
 
         # ── Step 3: Volatility-managed leverage ──
-        # Compute recent portfolio vol from combined strategy returns
-        combined_ret = pd.Series(0.0, index=strategy_returns[
-            list(strategy_returns.keys())[0]
-        ].index)
-        for name, ret in strategy_returns.items():
-            combined_ret += ret * rp_weights[name]
+        # Compute recent portfolio vol from combined strategy returns.
+        # Align all strategy return series on a common index to handle
+        # different warmup periods (TSMOM 252d vs Residual Reversal 5d).
+        all_ret = pd.DataFrame(strategy_returns).fillna(0.0)
+        combined_ret = (all_ret * pd.Series(rp_weights)).sum(axis=1)
 
         trailing_vol = (
             combined_ret.iloc[-VOL_MANAGED_LOOKBACK:].std() * np.sqrt(252)
