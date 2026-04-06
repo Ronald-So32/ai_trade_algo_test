@@ -1,0 +1,24 @@
+# Environment / secrets
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Data
+data/parquet/
+data/raw/
+data/processed/
+
+# Reports (regenerated)
+reports/*.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+.DS_Store

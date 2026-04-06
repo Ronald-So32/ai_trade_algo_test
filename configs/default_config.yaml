@@ -1,0 +1,75 @@
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  parquet_dir: "data/parquet"
+  start_date: "2015-01-01"
+  end_date: "2024-12-31"
+
+universe:
+  default_size: 150
+  sizes: [100, 150, 200, 300]
+  min_history_years: 2
+  min_price: 5.0
+  min_market_cap: 1.0e9
+  min_median_dollar_volume: 5.0e6
+  sector_balance:
+    Technology: [30, 40]
+    Financials: [20, 30]
+    Healthcare: [20, 30]
+    Consumer: [20, 30]
+    Industrials: [20, 25]
+    Energy_Materials: [15, 25]
+
+backtest:
+  initial_capital: 10000000.0
+  commission_bps: 2.0
+  spread_bps: 5.0
+  slippage_bps: 3.0
+  max_leverage: 2.0
+  target_volatility: 0.10
+
+strategies:
+  momentum:
+    lookback: 252
+    holding_period: 21
+    top_n: 30
+  mean_reversion:
+    lookback: 21
+    z_threshold: 2.0
+    holding_period: 5
+  pairs:
+    formation_period: 252
+    trading_period: 126
+    entry_z: 2.0
+    exit_z: 0.5
+    max_pairs: 20
+  kalman:
+    observation_covariance: 1.0
+    transition_covariance: 0.01
+    entry_z: 2.0
+    exit_z: 0.5
+
+regime:
+  n_states: 4
+  hmm_features: ["rolling_returns", "realized_vol", "correlation_proxy", "trend_strength"]
+  lookback: 63
+
+sizing:
+  kelly_fraction: 0.25
+  max_asset_exposure: 0.05
+  max_leverage: 2.0
+  max_strategy_exposure: 0.30
+
+walkforward:
+  train_years: 3
+  test_months: 6
+
+ml_meta:
+  models: ["logistic_regression", "random_forest", "gradient_boosting"]
+  cv_splits: 5
+
+alpha:
+  min_sharpe: 0.5
+  max_drawdown: 0.20
+  min_regime_robustness: 0.3
+  max_correlation_existing: 0.7

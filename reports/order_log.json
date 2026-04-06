@@ -1,0 +1,1003 @@
+{
+  "timestamp": "2026-03-19T20:38:23.453886-04:00",
+  "equity_before": 100000.0,
+  "n_target_positions": 139,
+  "n_orders": 134,
+  "n_success": 134,
+  "n_fail": 0,
+  "gross_exposure": 1.5685795450521307,
+  "net_exposure": 0.4867069042134768,
+  "orders": [
+    {
+      "symbol": "SYY",
+      "side": "buy",
+      "notional": 260.48,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CCI",
+      "side": "short",
+      "qty": 5,
+      "notional": 444.71,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "INTU",
+      "side": "short",
+      "qty": 2,
+      "notional": 1243.05,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CB",
+      "side": "short",
+      "qty": 7,
+      "notional": 2473.36,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "BSX",
+      "side": "short",
+      "qty": 30,
+      "notional": 2161.35,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "MCHP",
+      "side": "short",
+      "qty": 17,
+      "notional": 1123.92,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "AMZN",
+      "side": "buy",
+      "notional": 221.07,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "UPS",
+      "side": "short",
+      "qty": 5,
+      "notional": 545.19,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "SLB",
+      "side": "buy",
+      "notional": 1382.93,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ETN",
+      "side": "short",
+      "qty": 2,
+      "notional": 775.45,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "NOC",
+      "side": "buy",
+      "notional": 1092.26,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "MAR",
+      "side": "buy",
+      "notional": 934.6,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "EOG",
+      "side": "buy",
+      "notional": 2134.91,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "AIG",
+      "side": "buy",
+      "notional": 1912.85,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CDNS",
+      "side": "buy",
+      "notional": 247.98,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "LMT",
+      "side": "buy",
+      "notional": 933.1,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "VLO",
+      "side": "buy",
+      "notional": 1700.26,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "EA",
+      "side": "buy",
+      "notional": 4192.75,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "DE",
+      "side": "buy",
+      "notional": 375.34,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "GD",
+      "side": "short",
+      "qty": 3,
+      "notional": 1216.84,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ICE",
+      "side": "short",
+      "qty": 1,
+      "notional": 217.45,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "EQIX",
+      "side": "short",
+      "qty": 1,
+      "notional": 1857.17,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "INTC",
+      "side": "buy",
+      "notional": 1651.99,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "C",
+      "side": "buy",
+      "notional": 1225.43,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CMCSA",
+      "side": "buy",
+      "notional": 1042.75,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ROST",
+      "side": "buy",
+      "notional": 2379.68,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "AMT",
+      "side": "short",
+      "qty": 2,
+      "notional": 416.22,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "FDX",
+      "side": "buy",
+      "notional": 1405.02,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "COP",
+      "side": "buy",
+      "notional": 623.32,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "MRK",
+      "side": "buy",
+      "notional": 679.25,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "HON",
+      "side": "short",
+      "qty": 8,
+      "notional": 1873.33,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "SRE",
+      "side": "short",
+      "qty": 18,
+      "notional": 1749.66,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CAT",
+      "side": "buy",
+      "notional": 2139.44,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "AMD",
+      "side": "buy",
+      "notional": 1231.31,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "PLD",
+      "side": "buy",
+      "notional": 3052.75,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "PRU",
+      "side": "short",
+      "qty": 5,
+      "notional": 473.49,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "WMT",
+      "side": "buy",
+      "notional": 1271.67,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CVX",
+      "side": "buy",
+      "notional": 833.96,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "PSX",
+      "side": "buy",
+      "notional": 2533.49,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "DHR",
+      "side": "short",
+      "qty": 10,
+      "notional": 1975.0,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CI",
+      "side": "short",
+      "qty": 2,
+      "notional": 551.43,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "SBUX",
+      "side": "buy",
+      "notional": 1478.71,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "AMGN",
+      "side": "buy",
+      "notional": 251.87,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "TXN",
+      "side": "short",
+      "qty": 8,
+      "notional": 1574.22,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "JPM",
+      "side": "buy",
+      "notional": 724.45,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "DHI",
+      "side": "buy",
+      "notional": 178.05,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "NEM",
+      "side": "buy",
+      "notional": 2420.19,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "NSC",
+      "side": "buy",
+      "notional": 697.96,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "GE",
+      "side": "buy",
+      "notional": 2301.28,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "WM",
+      "side": "buy",
+      "notional": 145.5,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "SYK",
+      "side": "buy",
+      "notional": 1322.0,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ADBE",
+      "side": "buy",
+      "notional": 243.81,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "MS",
+      "side": "buy",
+      "notional": 815.06,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "NOW",
+      "side": "short",
+      "qty": 3,
+      "notional": 402.16,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "LEN",
+      "side": "short",
+      "qty": 4,
+      "notional": 419.93,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CRM",
+      "side": "short",
+      "qty": 3,
+      "notional": 589.35,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "AVGO",
+      "side": "buy",
+      "notional": 2731.29,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "TJX",
+      "side": "buy",
+      "notional": 1564.19,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CL",
+      "side": "short",
+      "qty": 1,
+      "notional": 136.61,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "KMB",
+      "side": "short",
+      "qty": 10,
+      "notional": 1065.03,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "PEP",
+      "side": "buy",
+      "notional": 2657.74,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "TMO",
+      "side": "buy",
+      "notional": 1408.95,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "KR",
+      "side": "short",
+      "qty": 13,
+      "notional": 967.74,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "BA",
+      "side": "buy",
+      "notional": 1994.92,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "O",
+      "side": "buy",
+      "notional": 476.16,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "GILD",
+      "side": "buy",
+      "notional": 734.09,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "QCOM",
+      "side": "short",
+      "qty": 3,
+      "notional": 419.62,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CME",
+      "side": "buy",
+      "notional": 580.85,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ORCL",
+      "side": "short",
+      "qty": 5,
+      "notional": 827.09,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "AAPL",
+      "side": "buy",
+      "notional": 2625.03,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "RTX",
+      "side": "buy",
+      "notional": 1555.48,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ACN",
+      "side": "buy",
+      "notional": 213.22,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CSX",
+      "side": "buy",
+      "notional": 950.93,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "VZ",
+      "side": "buy",
+      "notional": 307.35,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "PSA",
+      "side": "buy",
+      "notional": 1774.17,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "META",
+      "side": "buy",
+      "notional": 1717.46,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "F",
+      "side": "buy",
+      "notional": 445.1,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "BAC",
+      "side": "buy",
+      "notional": 400.43,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "MPC",
+      "side": "buy",
+      "notional": 1314.54,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "SCHW",
+      "side": "short",
+      "qty": 16,
+      "notional": 1554.92,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "HUM",
+      "side": "buy",
+      "notional": 546.49,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "KO",
+      "side": "buy",
+      "notional": 415.25,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ABT",
+      "side": "short",
+      "qty": 3,
+      "notional": 422.09,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "SO",
+      "side": "buy",
+      "notional": 274.98,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "PNC",
+      "side": "buy",
+      "notional": 516.14,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "NEE",
+      "side": "buy",
+      "notional": 1232.97,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "AMAT",
+      "side": "buy",
+      "notional": 1521.42,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "PM",
+      "side": "buy",
+      "notional": 176.03,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "EMR",
+      "side": "buy",
+      "notional": 1689.77,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "GS",
+      "side": "buy",
+      "notional": 1085.8,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "TFC",
+      "side": "buy",
+      "notional": 1706.85,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "MO",
+      "side": "buy",
+      "notional": 366.13,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "LLY",
+      "side": "buy",
+      "notional": 1480.41,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "COST",
+      "side": "buy",
+      "notional": 327.21,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "T",
+      "side": "short",
+      "qty": 59,
+      "notional": 1651.57,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "DVN",
+      "side": "buy",
+      "notional": 868.56,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "NUE",
+      "side": "buy",
+      "notional": 2757.71,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "LIN",
+      "side": "buy",
+      "notional": 281.43,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "USB",
+      "side": "short",
+      "qty": 16,
+      "notional": 867.15,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "IBM",
+      "side": "short",
+      "qty": 3,
+      "notional": 784.97,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "OXY",
+      "side": "buy",
+      "notional": 511.16,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "KLAC",
+      "side": "buy",
+      "notional": 1320.39,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "PFE",
+      "side": "short",
+      "qty": 69,
+      "notional": 1907.52,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "GIS",
+      "side": "buy",
+      "notional": 829.66,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "MDT",
+      "side": "short",
+      "qty": 2,
+      "notional": 229.16,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "DUK",
+      "side": "buy",
+      "notional": 416.28,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "FCX",
+      "side": "buy",
+      "notional": 1495.66,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "WFC",
+      "side": "buy",
+      "notional": 203.09,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ZTS",
+      "side": "short",
+      "qty": 20,
+      "notional": 2391.1,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "BK",
+      "side": "short",
+      "qty": 8,
+      "notional": 938.39,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "STZ",
+      "side": "short",
+      "qty": 15,
+      "notional": 2286.75,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "NKE",
+      "side": "short",
+      "qty": 10,
+      "notional": 557.97,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ITW",
+      "side": "buy",
+      "notional": 2879.12,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "LRCX",
+      "side": "buy",
+      "notional": 510.09,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ORLY",
+      "side": "short",
+      "qty": 13,
+      "notional": 1209.85,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "EXC",
+      "side": "buy",
+      "notional": 298.35,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "JNJ",
+      "side": "buy",
+      "notional": 2185.48,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "ELV",
+      "side": "short",
+      "qty": 5,
+      "notional": 1734.27,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "GOOGL",
+      "side": "buy",
+      "notional": 1321.13,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "AXP",
+      "side": "buy",
+      "notional": 306.77,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "AEP",
+      "side": "buy",
+      "notional": 984.07,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "MCD",
+      "side": "short",
+      "qty": 7,
+      "notional": 2231.72,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "MET",
+      "side": "short",
+      "qty": 6,
+      "notional": 474.42,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "BMY",
+      "side": "short",
+      "qty": 40,
+      "notional": 2377.27,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "D",
+      "side": "buy",
+      "notional": 457.29,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "NFLX",
+      "side": "short",
+      "qty": 19,
+      "notional": 1792.53,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "SPG",
+      "side": "buy",
+      "notional": 670.22,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "GM",
+      "side": "buy",
+      "notional": 1216.01,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "TMUS",
+      "side": "buy",
+      "notional": 1274.67,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "UNH",
+      "side": "short",
+      "qty": 2,
+      "notional": 719.72,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "CHTR",
+      "side": "short",
+      "qty": 9,
+      "notional": 1918.63,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "HAL",
+      "side": "short",
+      "qty": 10,
+      "notional": 394.59,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "PG",
+      "side": "short",
+      "qty": 3,
+      "notional": 502.65,
+      "status": "OrderStatus.ACCEPTED"
+    },
+    {
+      "symbol": "XOM",
+      "side": "buy",
+      "notional": 1148.38,
+      "status": "OrderStatus.ACCEPTED"
+    }
+  ],
+  "target_weights": {
+    "AAPL": 0.026250250404692428,
+    "ABBV": -0.0010174790796144595,
+    "ABT": -0.004220918451232423,
+    "ACN": 0.0021322196579285644,
+    "ADBE": 0.0024380517239267242,
+    "ADI": -0.0018348690644787568,
+    "AEP": 0.009840690577007618,
+    "AIG": 0.019128476107443317,
+    "AMAT": 0.01521422037739706,
+    "AMD": 0.012313062969980979,
+    "AMGN": 0.0025187009233487664,
+    "AMT": -0.0041622328635016505,
+    "AMZN": 0.002210747797180423,
+    "AVGO": 0.027312909372738704,
+    "AXP": 0.00306770175124146,
+    "BA": 0.01994917194353657,
+    "BAC": 0.004004336295365253,
+    "BK": -0.009383892790102513,
+    "BKNG": -0.00913708431217583,
+    "BMY": -0.02377270904385599,
+    "BSX": -0.021613475566497585,
+    "C": 0.012254259020363645,
+    "CAT": 0.021394352844855028,
+    "CB": -0.024733615105498593,
+    "CCI": -0.0044470668454260134,
+    "CDNS": 0.0024797526559350697,
+    "CHTR": -0.019186288890212733,
+    "CI": -0.005514345693407833,
+    "CL": -0.0013661056412626888,
+    "CMCSA": 0.010427539909223234,
+    "CME": 0.005808525346781055,
+    "COP": 0.006233161908867527,
+    "COST": 0.00327206171341905,
+    "CRM": -0.005893486744548617,
+    "CSX": 0.009509340968831971,
+    "CVX": 0.008339583296511058,
+    "D": 0.004572919911656062,
+    "DE": 0.003753419995370232,
+    "DHI": 0.0017805167703773943,
+    "DHR": -0.019750046561386698,
+    "DUK": 0.0041627543929153195,
+    "DVN": 0.008685605380245747,
+    "EA": 0.041927542535453624,
+    "ELV": -0.017342704996766677,
+    "EMR": 0.016897687473375292,
+    "EOG": 0.02134910683557053,
+    "EQIX": -0.01857173254502227,
+    "ETN": -0.00775451568980846,
+    "EXC": 0.0029835432243512008,
+    "F": 0.004450955295705256,
+    "FCX": 0.014956582949065078,
+    "FDX": 0.014050168905612274,
+    "GD": -0.012168430952671555,
+    "GE": 0.02301284929244922,
+    "GILD": 0.007340902559743242,
+    "GIS": 0.008296644666067145,
+    "GM": 0.012160107279221323,
+    "GOOGL": 0.01321125765366572,
+    "GS": 0.010858044165265954,
+    "HAL": -0.003945949622794171,
+    "HD": -0.0020275279080482853,
+    "HON": -0.018733252125883088,
+    "HUM": 0.005464858209441061,
+    "IBM": -0.00784966306255906,
+    "ICE": -0.0021745037280449173,
+    "INTC": 0.016519928977004543,
+    "INTU": -0.012430526741507051,
+    "ITW": 0.02879122200837152,
+    "JNJ": 0.021854786268908397,
+    "JPM": 0.007244500189534534,
+    "KLAC": 0.013203866137513197,
+    "KMB": -0.010650339579839713,
+    "KO": 0.00415247619818065,
+    "KR": -0.009677387125037485,
+    "LEN": -0.004199288802895743,
+    "LIN": 0.002814329739805927,
+    "LLY": 0.014804072793810756,
+    "LMT": 0.009330951690466494,
+    "LRCX": 0.005100943217888241,
+    "MAR": 0.009346028046189104,
+    "MCD": -0.022317242508971824,
+    "MCHP": -0.011239246466540582,
+    "MDT": -0.002291638684264213,
+    "MET": -0.004744226943519006,
+    "META": 0.017174564576915595,
+    "MO": 0.0036612980145369553,
+    "MPC": 0.013145355280543405,
+    "MRK": 0.006792526843964347,
+    "MS": 0.008150567272619197,
+    "NEE": 0.012329726000917543,
+    "NEM": 0.024201880592598257,
+    "NFLX": -0.017925250800574895,
+    "NKE": -0.0055796577234263605,
+    "NOC": 0.010922637733873619,
+    "NOW": -0.004021630700753351,
+    "NSC": 0.006979627464074962,
+    "NUE": 0.027577083241904797,
+    "O": 0.004761647922950269,
+    "ORCL": -0.008270915662246588,
+    "ORLY": -0.012098494297451204,
+    "OXY": 0.005111629655445066,
+    "PEP": 0.02657740742151221,
+    "PFE": -0.019075157955310295,
+    "PG": -0.005026500915641342,
+    "PLD": 0.030527470831097716,
+    "PM": 0.001760337385680299,
+    "PNC": 0.005161362034297332,
+    "PRU": -0.004734866123152012,
+    "PSA": 0.017741735317811175,
+    "PSX": 0.025334871725912117,
+    "QCOM": -0.004196248911194521,
+    "ROST": 0.02379683104740815,
+    "RTX": 0.015554760370603948,
+    "SBUX": 0.014787068334394304,
+    "SCHW": -0.015549170873857918,
+    "SHW": -0.0024530178718931367,
+    "SLB": 0.013829339412111778,
+    "SO": 0.002749831671399698,
+    "SPG": 0.006702208546013931,
+    "SRE": -0.017496623773095635,
+    "STZ": -0.02286751492709644,
+    "SYK": 0.013219980423075059,
+    "SYY": 0.0026047637046083183,
+    "T": -0.016515676176453716,
+    "TFC": 0.017068494070266612,
+    "TJX": 0.015641856214546546,
+    "TMO": 0.014089506536726233,
+    "TMUS": 0.01274666689025769,
+    "TXN": -0.015742169087721934,
+    "UNH": -0.007197166792693445,
+    "UPS": -0.005451949253687328,
+    "USB": -0.008671516262132882,
+    "VLO": 0.017002626014071633,
+    "VZ": 0.003073505927366996,
+    "WFC": 0.0020308711007468775,
+    "WM": 0.0014550358737052231,
+    "WMT": 0.012716670846296296,
+    "XOM": 0.011483788002749013,
+    "ZTS": -0.02391099817356743
+  }
+}

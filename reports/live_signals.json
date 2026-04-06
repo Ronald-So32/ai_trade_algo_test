@@ -1,0 +1,501 @@
+{
+  "timestamp": "2026-03-27T15:30:00.146996-04:00",
+  "date": "2026-03-27",
+  "equity": 99559.68,
+  "n_positions": 142,
+  "n_orders": 60,
+  "n_success": 26,
+  "n_fail": 34,
+  "gross_exposure": 1.4690586402303067,
+  "net_exposure": 0.3766002303416043,
+  "orders": [
+    {
+      "symbol": "CL",
+      "side": "buy",
+      "error": "{\"available\":\"2\",\"code\":40310000,\"existing_qty\":\"2\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 19.043565762, available: 2)\",\"symbol\":\"CL\"}"
+    },
+    {
+      "symbol": "GIS",
+      "side": "sell",
+      "qty": null,
+      "notional": 135.96,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "LOW",
+      "side": "sell",
+      "error": "{\"available\":\"0.453093269\",\"code\":40310000,\"existing_qty\":\"0.453093269\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 0.453263093, available: 0.453093269)\",\"symbol\":\"LOW\"}"
+    },
+    {
+      "symbol": "PFE",
+      "side": "buy",
+      "error": "{\"available\":\"69\",\"code\":40310000,\"existing_qty\":\"69\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 79.177033492, available: 69)\",\"symbol\":\"PFE\"}"
+    },
+    {
+      "symbol": "ABT",
+      "side": "buy",
+      "error": "{\"available\":\"4\",\"code\":40310000,\"existing_qty\":\"4\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 16.734765998, available: 4)\",\"symbol\":\"ABT\"}"
+    },
+    {
+      "symbol": "EMR",
+      "side": "buy",
+      "notional": 130.3,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "EA",
+      "side": "sell",
+      "error": "{\"available\":\"21.750682643\",\"code\":40310000,\"existing_qty\":\"21.750682643\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 31, available: 21.750682643)\",\"symbol\":\"EA\"}"
+    },
+    {
+      "symbol": "AMZN",
+      "side": "sell",
+      "qty": null,
+      "notional": 112.59,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "ITW",
+      "side": "sell",
+      "qty": null,
+      "notional": 134.05,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "ETN",
+      "side": "buy",
+      "notional": 187.64,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "SLB",
+      "side": "sell",
+      "error": "{\"available\":\"7.243167502\",\"code\":40310000,\"existing_qty\":\"7.243167502\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 13, available: 7.243167502)\",\"symbol\":\"SLB\"}"
+    },
+    {
+      "symbol": "PEP",
+      "side": "sell",
+      "qty": null,
+      "notional": 358.26,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "CI",
+      "side": "short",
+      "qty": 1,
+      "notional": 289.14,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "KR",
+      "side": "buy",
+      "error": "{\"available\":\"13\",\"code\":40310000,\"existing_qty\":\"13\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 16.780878128, available: 13)\",\"symbol\":\"KR\"}"
+    },
+    {
+      "symbol": "SRE",
+      "side": "buy",
+      "error": "{\"available\":\"10.523613107\",\"code\":40310000,\"existing_qty\":\"10.523613107\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 24.051196322, available: 10.523613107)\",\"symbol\":\"SRE\"}"
+    },
+    {
+      "symbol": "IBM",
+      "side": "buy",
+      "error": "{\"available\":\"0.000160424\",\"code\":40310000,\"existing_qty\":\"0.000160424\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 5.595793304, available: 0.000160424)\",\"symbol\":\"IBM\"}"
+    },
+    {
+      "symbol": "ACN",
+      "side": "sell",
+      "error": "{\"available\":\"1.045298558\",\"code\":40310000,\"existing_qty\":\"1.045298558\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 10, available: 1.045298558)\",\"symbol\":\"ACN\"}"
+    },
+    {
+      "symbol": "CMCSA",
+      "side": "sell",
+      "error": "{\"available\":\"30.185157623\",\"code\":40310000,\"existing_qty\":\"30.185157623\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 55, available: 30.185157623)\",\"symbol\":\"CMCSA\"}"
+    },
+    {
+      "symbol": "GM",
+      "side": "sell",
+      "error": "{\"available\":\"16.480959479\",\"code\":40310000,\"existing_qty\":\"16.480959479\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 22, available: 16.480959479)\",\"symbol\":\"GM\"}"
+    },
+    {
+      "symbol": "FDX",
+      "side": "sell",
+      "qty": null,
+      "notional": 142.03,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "ZTS",
+      "side": "buy",
+      "error": "{\"available\":\"7.839299578\",\"code\":40310000,\"existing_qty\":\"7.839299578\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 12, available: 7.839299578)\",\"symbol\":\"ZTS\"}"
+    },
+    {
+      "symbol": "DHR",
+      "side": "buy",
+      "error": "{\"available\":\"1.983490062\",\"code\":40310000,\"existing_qty\":\"1.983490062\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 7.422449878, available: 1.983490062)\",\"symbol\":\"DHR\"}"
+    },
+    {
+      "symbol": "LMT",
+      "side": "sell",
+      "qty": null,
+      "notional": 110.15,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "SYY",
+      "side": "sell",
+      "qty": null,
+      "notional": 127.38,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "NVDA",
+      "side": "buy",
+      "notional": 253.29,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "UNH",
+      "side": "buy",
+      "error": "{\"available\":\"2\",\"code\":40310000,\"existing_qty\":\"2\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 5.016621464, available: 2)\",\"symbol\":\"UNH\"}"
+    },
+    {
+      "symbol": "HD",
+      "side": "short",
+      "qty": 1,
+      "notional": 359.97,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "DHI",
+      "side": "sell",
+      "error": "{\"available\":\"0.90243262\",\"code\":40310000,\"existing_qty\":\"0.90243262\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 0.902619207, available: 0.90243262)\",\"symbol\":\"DHI\"}"
+    },
+    {
+      "symbol": "AVGO",
+      "side": "buy",
+      "notional": 121.26,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "MO",
+      "side": "buy",
+      "notional": 99.63,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "SBUX",
+      "side": "sell",
+      "error": "{\"available\":\"0.000622679\",\"code\":40310000,\"existing_qty\":\"0.000622679\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 3, available: 0.000622679)\",\"symbol\":\"SBUX\"}"
+    },
+    {
+      "symbol": "ADBE",
+      "side": "sell",
+      "error": "{\"available\":\"1.003498518\",\"code\":40310000,\"existing_qty\":\"1.003498518\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 4, available: 1.003498518)\",\"symbol\":\"ADBE\"}"
+    },
+    {
+      "symbol": "PSX",
+      "side": "short",
+      "qty": 5,
+      "notional": 1117.97,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "HON",
+      "side": "buy",
+      "error": "{\"available\":\"8\",\"code\":40310000,\"existing_qty\":\"8\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 8.703716956, available: 8)\",\"symbol\":\"HON\"}"
+    },
+    {
+      "symbol": "DIS",
+      "side": "short",
+      "qty": 1,
+      "notional": 134.67,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "AIG",
+      "side": "sell",
+      "error": "{\"available\":\"25.648205403\",\"code\":40310000,\"existing_qty\":\"25.648205403\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 30, available: 25.648205403)\",\"symbol\":\"AIG\"}"
+    },
+    {
+      "symbol": "JNJ",
+      "side": "sell",
+      "error": "{\"available\":\"9.168290225\",\"code\":40310000,\"existing_qty\":\"9.168290225\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 9.170189747, available: 9.168290225)\",\"symbol\":\"JNJ\"}"
+    },
+    {
+      "symbol": "NUE",
+      "side": "sell",
+      "error": "{\"available\":\"4.999773262\",\"code\":40310000,\"existing_qty\":\"4.999773262\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 10, available: 4.999773262)\",\"symbol\":\"NUE\"}"
+    },
+    {
+      "symbol": "CB",
+      "side": "buy",
+      "error": "{\"available\":\"7\",\"code\":40310000,\"existing_qty\":\"7\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 8.130245163, available: 7)\",\"symbol\":\"CB\"}"
+    },
+    {
+      "symbol": "TMO",
+      "side": "sell",
+      "error": "{\"available\":\"2.978878599\",\"code\":40310000,\"existing_qty\":\"2.978878599\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 6, available: 2.978878599)\",\"symbol\":\"TMO\"}"
+    },
+    {
+      "symbol": "EQIX",
+      "side": "buy",
+      "error": "{\"available\":\"1\",\"code\":40310000,\"existing_qty\":\"1\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 1.423624639, available: 1)\",\"symbol\":\"EQIX\"}"
+    },
+    {
+      "symbol": "HAL",
+      "side": "buy",
+      "error": "{\"available\":\"10\",\"code\":40310000,\"existing_qty\":\"10\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 40.315684812, available: 10)\",\"symbol\":\"HAL\"}"
+    },
+    {
+      "symbol": "QCOM",
+      "side": "buy",
+      "error": "{\"available\":\"3\",\"code\":40310000,\"existing_qty\":\"3\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 13.533150039, available: 3)\",\"symbol\":\"QCOM\"}"
+    },
+    {
+      "symbol": "EXC",
+      "side": "sell",
+      "qty": null,
+      "notional": 148.94,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "TMUS",
+      "side": "buy",
+      "notional": 103.24,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "HUM",
+      "side": "sell",
+      "error": "{\"available\":\"3.332947342\",\"code\":40310000,\"existing_qty\":\"3.332947342\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 13, available: 3.332947342)\",\"symbol\":\"HUM\"}"
+    },
+    {
+      "symbol": "CDNS",
+      "side": "sell",
+      "qty": null,
+      "notional": 1364.55,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "TTWO",
+      "side": "buy",
+      "notional": 119.68,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "AXP",
+      "side": "sell",
+      "error": "{\"available\":\"1.040004068\",\"code\":40310000,\"existing_qty\":\"1.040004068\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 4, available: 1.040004068)\",\"symbol\":\"AXP\"}"
+    },
+    {
+      "symbol": "ICE",
+      "side": "short",
+      "qty": 1,
+      "notional": 181.37,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "PRU",
+      "side": "short",
+      "qty": 1,
+      "notional": 101.06,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "MRK",
+      "side": "sell",
+      "error": "{\"available\":\"5.909241499\",\"code\":40310000,\"existing_qty\":\"5.909241499\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 9, available: 5.909241499)\",\"symbol\":\"MRK\"}"
+    },
+    {
+      "symbol": "USB",
+      "side": "buy",
+      "error": "{\"available\":\"18\",\"code\":40310000,\"existing_qty\":\"18\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 28.25211074, available: 18)\",\"symbol\":\"USB\"}"
+    },
+    {
+      "symbol": "ADI",
+      "side": "sell",
+      "error": "{\"available\":\"4.428785559\",\"code\":40310000,\"existing_qty\":\"4.428785559\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 4.429933921, available: 4.428785559)\",\"symbol\":\"ADI\"}"
+    },
+    {
+      "symbol": "TXN",
+      "side": "buy",
+      "notional": 1521.92,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "C",
+      "side": "sell",
+      "error": "{\"available\":\"0.002027093\",\"code\":40310000,\"existing_qty\":\"0.002027093\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 1, available: 0.002027093)\",\"symbol\":\"C\"}"
+    },
+    {
+      "symbol": "NEE",
+      "side": "sell",
+      "error": "{\"available\":\"12.153028769\",\"code\":40310000,\"existing_qty\":\"12.153028769\",\"held_for_orders\":\"0\",\"message\":\"insufficient qty available for order (requested: 21, available: 12.153028769)\",\"symbol\":\"NEE\"}"
+    },
+    {
+      "symbol": "JPM",
+      "side": "sell",
+      "qty": null,
+      "notional": 308.47,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "TJX",
+      "side": "sell",
+      "qty": null,
+      "notional": 106.27,
+      "status": "OrderStatus.PENDING_NEW"
+    },
+    {
+      "symbol": "SCHW",
+      "side": "short",
+      "qty": 1,
+      "notional": 179.32,
+      "status": "OrderStatus.PENDING_NEW"
+    }
+  ],
+  "target_weights": {
+    "AAPL": 0.003989793650974514,
+    "ABBV": 0.015974689608159832,
+    "ABT": 0.013393120734421853,
+    "ACN": -0.018358896557970968,
+    "ADBE": -0.008745209603763156,
+    "AEP": 0.011016576343216813,
+    "AIG": -0.0037189265702959563,
+    "AMAT": 0.014599998549678122,
+    "AMD": 0.003008157448456006,
+    "AMGN": 0.0037557681559345357,
+    "AMT": -0.01930197785184156,
+    "AMZN": 0.012931897582922099,
+    "APD": -0.01704782848561491,
+    "AVGO": 0.014390228860786166,
+    "AXP": -0.01066325119696172,
+    "BA": 0.012728584387301315,
+    "BAC": 0.018704436678494255,
+    "BK": -0.013379051886591727,
+    "BKNG": 0.006717539903130201,
+    "BLK": -0.011891937400216065,
+    "BSX": -0.005859308992165693,
+    "C": -0.00195004916246168,
+    "CAT": 0.02179537299384315,
+    "CB": 0.003646690812055455,
+    "CCI": -0.005059414424038423,
+    "CHTR": -0.008305894218792156,
+    "CI": -0.021376940437564464,
+    "CL": 0.014460927746630823,
+    "CMCSA": -0.007167423602988719,
+    "CME": 0.004193648734809706,
+    "COP": 0.007797991676993776,
+    "COST": 0.002223393264510035,
+    "CRM": -0.006834372957896292,
+    "CSX": 0.011387096636802378,
+    "CVX": 0.00861616336315021,
+    "D": 0.0057338522327551895,
+    "DE": 0.003571189873422423,
+    "DHR": 0.009920885398131088,
+    "DIS": -0.0022812036037805176,
+    "DUK": 0.006240355207731975,
+    "DVN": 0.009421104106581596,
+    "EA": -0.019241703140866782,
+    "ECL": 0.0014517999789169893,
+    "ELV": -0.006043460441145569,
+    "EMR": 0.016297334633864572,
+    "EOG": 0.0043523410496459905,
+    "EQIX": 0.004093871188581828,
+    "ETN": -0.005289328036797087,
+    "EXC": 0.02270675917925298,
+    "F": 0.015192860915410583,
+    "FCX": 0.0055718546626817925,
+    "FDX": 0.01257212222750738,
+    "GD": -0.011903317442838983,
+    "GE": 0.008220036081405513,
+    "GILD": 0.006154610794920621,
+    "GIS": 0.006729690236325761,
+    "GM": -0.004670487472111483,
+    "GOOGL": 0.02235149721413614,
+    "GS": 0.009248308608083941,
+    "HAL": 0.012250440730907369,
+    "HD": -0.003615624759064963,
+    "HON": 0.0015858801959053018,
+    "HUM": -0.01807682713745613,
+    "IBM": 0.01328043547959845,
+    "ICE": -0.0033605688043834986,
+    "INTC": 0.008700404161018195,
+    "INTU": -0.004919699470300385,
+    "ISRG": -0.022668860111153023,
+    "JPM": 0.0262786026185908,
+    "KLAC": 0.013198201746937912,
+    "KMB": -0.028584083116987152,
+    "KO": 0.003663326578541211,
+    "KR": 0.002777685360334774,
+    "LEN": -0.004851083209273666,
+    "LIN": 0.0027747912758814028,
+    "LLY": 0.001270972340668865,
+    "LMT": 0.009850696135571073,
+    "LRCX": 0.012862786086635072,
+    "MAR": 0.007616604768662599,
+    "MCD": -0.0010564390811559085,
+    "MCHP": -0.007965933550154696,
+    "MDT": -0.021827527517771526,
+    "MET": -0.005649096756366665,
+    "META": -0.0027894360101088206,
+    "MO": 0.004733454989030079,
+    "MPC": 0.014609841221758143,
+    "MRK": -0.0041059795590873745,
+    "MS": 0.006968253380700305,
+    "MSFT": 0.017560922299502613,
+    "NEE": -0.00866182454021909,
+    "NEM": 0.02257668257711065,
+    "NFLX": -0.017900279080746085,
+    "NKE": -0.005759755927810678,
+    "NOC": 0.008233545670514248,
+    "NOW": -0.005227481416358372,
+    "NSC": 0.0076193876658949625,
+    "NUE": -0.008831648044442844,
+    "NVDA": 0.02234006221938251,
+    "O": 0.0297287797492574,
+    "ORCL": -0.00907957587896762,
+    "ORLY": -0.030312592689832673,
+    "OXY": 0.006554104995600409,
+    "PEP": 0.023784618245635863,
+    "PFE": 0.0027807631402977286,
+    "PG": -0.0055399181095240075,
+    "PLD": 0.005957047444381354,
+    "PM": 0.00175071429581774,
+    "PNC": 0.004593508108822557,
+    "PRU": -0.005713739289637017,
+    "PSA": 0.013486833186651385,
+    "PSX": -0.0012723150265423547,
+    "QCOM": 0.013469107945422904,
+    "ROST": 0.02222730086932324,
+    "RTX": 0.012822839444307552,
+    "SBUX": -0.0028567440094678796,
+    "SCHW": -0.01836538080709793,
+    "SHW": -0.0025196091518508924,
+    "SLB": -0.0033966909286316863,
+    "SNPS": -0.002767220418652143,
+    "SO": 0.003143787118743321,
+    "SPG": 0.02114039878818948,
+    "SRE": 0.013005573855648427,
+    "STZ": -0.0233769391706325,
+    "SYK": 0.012392400978567895,
+    "SYY": 0.003440973248727072,
+    "T": -0.015079936648070141,
+    "TFC": 0.0019240815712705112,
+    "TJX": 0.013211475164279588,
+    "TMO": -0.015792350034348156,
+    "TMUS": 0.01409361342375395,
+    "TTWO": 0.014053342339018147,
+    "UNH": 0.00782206327449073,
+    "UNP": -0.020998758227408907,
+    "UPS": -0.004215302974142506,
+    "USB": 0.005245446959532081,
+    "VLO": 0.026484711486779087,
+    "VZ": 0.003695622155970255,
+    "WFC": 0.0014020903448680377,
+    "WM": 0.017516534741946244,
+    "WMT": 0.0137498134173693,
+    "XOM": 0.01267316451664808,
+    "ZTS": 0.004763196249861009
+  }
+}

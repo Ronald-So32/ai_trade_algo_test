@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0",
+  "saved_at": "2026-03-18T09:41:49.423771+00:00",
+  "experiments": [
+    {
+      "experiment_id": "53121442-7861-4b19-8eb0-a734b6a4ff6a",
+      "timestamp": "2026-03-18T09:41:49.405810+00:00",
+      "config_hash": "cc1cc44955eb49e79dec48852d38bb83770133e642042aa4b7d90efef8304570",
+      "dataset_version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_commit": "no-git",
+      "strategy_set": [
+        "time_series_momentum",
+        "cross_sectional_momentum",
+        "mean_reversion",
+        "distance_pairs",
+        "kalman_pairs",
+        "volatility_breakout",
+        "carry",
+        "factor_momentum",
+        "pca_stat_arb",
+        "vol_managed",
+        "pead",
+        "residual_momentum",
+        "low_risk_bab",
+        "short_term_reversal",
+        "vol_risk_premium"
+      ],
+      "parameters": {
+        "data": {
+          "raw_dir": "data/raw",
+          "processed_dir": "data/processed",
+          "parquet_dir": "data/parquet",
+          "start_date": "2015-01-01",
+          "end_date": "2024-12-31"
+        },
+        "universe": {
+          "default_size": 150,
+          "sizes": [
+            100,
+            150,
+            200,
+            300
+          ],
+          "min_history_years": 2,
+          "min_price": 5.0,
+          "min_market_cap": "1.0e9",
+          "min_median_dollar_volume": "5.0e6",
+          "sector_balance": {
+            "Technology": [
+              30,
+              40
+            ],
+            "Financials": [
+              20,
+              30
+            ],
+            "Healthcare": [
+              20,
+              30
+            ],
+            "Consumer": [
+              20,
+              30
+            ],
+            "Industrials": [
+              20,
+              25
+            ],
+            "Energy_Materials": [
+              15,
+              25
+            ]
+          }
+        },
+        "backtest": {
+          "initial_capital": 10000000.0,
+          "commission_bps": 2.0,
+          "spread_bps": 5.0,
+          "slippage_bps": 3.0,
+          "max_leverage": 2.0,
+          "target_volatility": 0.1
+        },
+        "strategies": {
+          "momentum": {
+            "lookback": 252,
+            "holding_period": 21,
+            "top_n": 30
+          },
+          "mean_reversion": {
+            "lookback": 21,
+            "z_threshold": 2.0,
+            "holding_period": 5
+          },
+          "pairs": {
+            "formation_period": 252,
+            "trading_period": 126,
+            "entry_z": 2.0,
+            "exit_z": 0.5,
+            "max_pairs": 20
+          },
+          "kalman": {
+            "observation_covariance": 1.0,
+            "transition_covariance": 0.01,
+            "entry_z": 2.0,
+            "exit_z": 0.5
+          }
+        },
+        "regime": {
+          "n_states": 4,
+          "hmm_features": [
+            "rolling_returns",
+            "realized_vol",
+            "correlation_proxy",
+            "trend_strength"
+          ],
+          "lookback": 63
+        },
+        "sizing": {
+          "kelly_fraction": 0.25,
+          "max_asset_exposure": 0.05,
+          "max_leverage": 2.0,
+          "max_strategy_exposure": 0.3
+        },
+        "walkforward": {
+          "train_years": 3,
+          "test_months": 6
+        },
+        "ml_meta": {
+          "models": [
+            "logistic_regression",
+            "random_forest",
+            "gradient_boosting"
+          ],
+          "cv_splits": 5
+        },
+        "alpha": {
+          "min_sharpe": 0.5,
+          "max_drawdown": 0.2,
+          "min_regime_robustness": 0.3,
+          "max_correlation_existing": 0.7
+        }
+      },
+      "results": {
+        "time_series_momentum_sharpe": 0.44989652326872004,
+        "time_series_momentum_return": 0.04542205363576459,
+        "time_series_momentum_maxdd": -0.20252132778078943,
+        "cross_sectional_momentum_sharpe": 0.3681236275228032,
+        "cross_sectional_momentum_return": 0.026211612288246616,
+        "cross_sectional_momentum_maxdd": -0.1826931399286297,
+        "mean_reversion_sharpe": -0.04413288469789471,
+        "mean_reversion_return": -0.00045491579608305084,
+        "mean_reversion_maxdd": -0.035402215887754274,
+        "distance_pairs_sharpe": -0.3643896437381973,
+        "distance_pairs_return": -0.011288753053643909,
+        "distance_pairs_maxdd": -0.20465432516294035,
+        "kalman_pairs_sharpe": -0.503524334119278,
+        "kalman_pairs_return": -0.009809182110924219,
+        "kalman_pairs_maxdd": -0.1767884210560445,
+        "volatility_breakout_sharpe": 0.3014217599122309,
+        "volatility_breakout_return": 0.025595924867976183,
+        "volatility_breakout_maxdd": -0.16729907254414939,
+        "carry_sharpe": -0.0400671148704078,
+        "carry_return": -0.002906682288908482,
+        "carry_maxdd": -0.19517843797916995,
+        "factor_momentum_sharpe": -0.5540110885542854,
+        "factor_momentum_return": -0.013251500645765302,
+        "factor_momentum_maxdd": -0.19698558436768476,
+        "pca_stat_arb_sharpe": -0.03608069505874514,
+        "pca_stat_arb_return": -0.002117809078139256,
+        "pca_stat_arb_maxdd": -0.2034864467464494,
+        "vol_managed_sharpe": 1.0083752268893653,
+        "vol_managed_return": 0.1067977668633306,
+        "vol_managed_maxdd": -0.15811103640408342,
+        "pead_sharpe": 0.3684041639118323,
+        "pead_return": 0.02183395979657067,
+        "pead_maxdd": -0.13957475297213073,
+        "residual_momentum_sharpe": 0.05752409170562512,
+        "residual_momentum_return": 0.00391079094604187,
+        "residual_momentum_maxdd": -0.18120234715561176,
+        "low_risk_bab_sharpe": 0.0035009771479911204,
+        "low_risk_bab_return": 0.00023721071237343478,
+        "low_risk_bab_maxdd": -0.22468720017609595,
+        "short_term_reversal_sharpe": -0.1435703979641892,
+        "short_term_reversal_return": -0.006171678193487932,
+        "short_term_reversal_maxdd": -0.20497524819279322,
+        "vol_risk_premium_sharpe": 0.19471740880648006,
+        "vol_risk_premium_return": 0.01582619042340436,
+        "vol_risk_premium_maxdd": -0.2352327069249693,
+        "portfolio_sharpe": 1.3241713089976657,
+        "portfolio_vol": 0.06528164273902196
+      },
+      "status": "finished",
+      "start_time": "2026-03-18T09:41:49.423271+00:00",
+      "end_time": "2026-03-18T09:41:49.423673+00:00",
+      "duration_seconds": 0.000402
+    }
+  ]
+}
