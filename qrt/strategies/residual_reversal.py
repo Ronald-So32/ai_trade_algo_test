@@ -100,6 +100,7 @@ class ResidualReversal(Strategy):
         vol_scale: bool = True,
         vol_lookback: int = 21,
         sector_map: dict | None = None,
+        liquidity_weight: bool = False,
     ) -> None:
         params = dict(
             lookback=lookback,
@@ -109,6 +110,7 @@ class ResidualReversal(Strategy):
             target_gross=target_gross,
             vol_scale=vol_scale,
             vol_lookback=vol_lookback,
+            liquidity_weight=liquidity_weight,
         )
         super().__init__(name="ResidualReversal", params=params)
         self._sector_map = sector_map or {}
@@ -209,13 +211,29 @@ class ResidualReversal(Strategy):
         returns: pd.DataFrame | None = None,
         **kwargs,
     ) -> pd.DataFrame:
-        """Vol-scaled, gross-normalized weights."""
+        """
+        Vol-scaled, gross-normalized weights with optional liquidity weighting.
+
+        Liquidity weighting (Nagel 2012 "Evaporating Liquidity"):
+          The short-term reversal premium is compensation for liquidity provision.
+          Less-liquid stocks have stronger reversal (Avramov, Chordia & Goyal 2006).
+          Within selected quintiles, weight positions by inverse dollar volume
+          so that less-liquid stocks (where the premium is strongest) get
+          proportionally larger positions.
+
+          Implementation: use inverse of trailing 21-day average absolute return
+          as an Amihud-like illiquidity proxy (since we don't have volume data
+          in the signal path). Stocks with smaller absolute returns are more
+          liquid; stocks with larger absolute returns are less liquid and get
+          higher weight.
+        """
         if returns is None:
             returns = kwargs.get("returns", None)
 
         target_gross = self.params["target_gross"]
         vol_scale = self.params["vol_scale"]
         vol_lookback = self.params["vol_lookback"]
+        liquidity_weight = self.params.get("liquidity_weight", False)
 
         if vol_scale and returns is not None:
             realized_vol = (
@@ -227,6 +245,24 @@ class ResidualReversal(Strategy):
             raw_weights = signals / realized_vol
         else:
             raw_weights = signals.copy()
+
+        # Liquidity weighting: scale selected positions by illiquidity
+        if liquidity_weight and returns is not None:
+            # Amihud-like proxy: mean |return| over lookback period
+            # Higher mean |return| = less liquid = stronger reversal premium
+            illiquidity = (
+                returns.abs()
+                .rolling(vol_lookback, min_periods=max(1, vol_lookback // 2))
+                .mean()
+                .clip(lower=1e-6)
+            )
+            # Rank cross-sectionally to avoid extreme outlier influence
+            illiq_rank = illiquidity.rank(axis=1, pct=True).clip(lower=0.1)
+            # Only apply to selected stocks (non-zero signals)
+            liq_scale = pd.DataFrame(1.0, index=signals.index, columns=signals.columns)
+            active = signals.abs() > 0
+            liq_scale[active] = illiq_rank[active]
+            raw_weights = raw_weights * liq_scale
 
         raw_weights = raw_weights.replace([np.inf, -np.inf], 0.0).fillna(0.0)
         gross = raw_weights.abs().sum(axis=1).replace(0, np.nan)

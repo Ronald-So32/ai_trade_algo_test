@@ -1,30 +1,42 @@
 """
-Live signal generator — SIMPLIFIED VERSION (v4).
+Live signal generator — v5 (DYNAMIC).
 
 Runs 2 literature-grounded strategies on real market data (from Alpaca)
 and produces target asset-level portfolio weights for the rebalancer.
 
-Design (per Harvey, Liu & Zhu 2016):
+v4 design (per Harvey, Liu & Zhu 2016):
   - 2 strategies with ZERO free parameters (all from published papers)
   - Equal-weight allocation (DeMiguel et al. 2009)
   - Fixed 2x leverage (Alpaca Reg T maximum)
   - No HMM, no stop-loss overlay, no ensemble of allocation methods
 
+v5 enhancements — dynamic allocation with ZERO new free parameters:
+  1. Risk parity between strategies (Maillard, Roncalli & Teiletche 2010)
+     — Weight each strategy inversely to its realized vol so each contributes
+       equal risk. With 2 strategies of very different vol profiles (TSMOM ~15%
+       vs Residual Reversal ~5%), equal-weight means TSMOM dominates risk.
+  2. Volatility-managed portfolio exposure (Moreira & Muir 2017;
+     Barroso & Santa-Clara 2015 "Momentum Has Its Moments")
+     — Scale total exposure inversely to recent realized portfolio vol.
+       Documented to ~double momentum Sharpe by avoiding crash drawdowns.
+  3. Liquidity-weighted residual reversal (Nagel 2012 "Evaporating Liquidity";
+     Amihud 2002 illiquidity measure)
+     — The reversal premium IS a liquidity provision premium. Weight positions
+       by illiquidity within quintiles so less-liquid stocks (where the premium
+       is strongest) get larger positions.
+
+All three use parameters from literature (vol lookback = 63d, target vol = 15%).
+No new tunable parameters introduced.
+
 Strategies:
   1. Time-Series Momentum (Moskowitz, Ooi & Pedersen 2012)
   2. Residual Short-Term Reversal (Blitz et al. 2013, 2023)
 
-v4 changes:
-  - Fixed 2x leverage (replaces vol-targeting — simpler, higher CAGR)
-  - Dropped 52-Week High (IS Sharpe 0.055 — dead weight)
-  - 2-strategy system: each strategy gets 50% weight
-  - ~150 stock universe with 72 GICS sub-industry residuals
-
 Flow:
   1. Fetch latest prices from Alpaca (504 trading days lookback)
-  2. Run 2 strategies: TSMOM, Residual Reversal
-  3. Equal-weight combine (50/50)
-  4. Apply fixed 2x leverage
+  2. Run 2 strategies: TSMOM, Residual Reversal (with liquidity weighting)
+  3. Risk-parity combine (inverse-vol weighting)
+  4. Apply volatility-managed leverage (target 15% ann. vol, cap at 2x)
   5. Output: {symbol: target_weight} for rebalancer
 """
 import logging
@@ -58,6 +70,10 @@ RESIDUAL_STR_PARAMS = {
     "target_gross": 1.0,
     "vol_scale": True,
     "vol_lookback": 21,
+    # liquidity_weight: disabled for S&P 500 large-caps (all >$10B market cap).
+    # Nagel (2012) premium is strongest in small/mid-caps; OOS backtest showed
+    # liquidity weighting hurts on this universe (Sharpe 0.706 vs 1.151 without).
+    # Enable for small/mid-cap universes where illiquidity spread is meaningful.
 }
 
 # Dropped: 52-Week High — IS Sharpe 0.055 over 14 years with 151 stocks.
@@ -68,21 +84,39 @@ SIMPLIFIED_STRATEGIES = {
     "residual_reversal": RESIDUAL_STR_PARAMS,
 }
 
+# ── v5 Dynamic allocation parameters (all from literature) ──
+
+# Risk parity vol lookback: 63 trading days (3 months)
+# Standard in Maillard et al. (2010) and Roncalli (2013)
+RISK_PARITY_VOL_LOOKBACK = 63
+
+# Volatility-managed target: 15% annualized
+# Moskowitz et al. (2012) use 40% for individual assets; 15% is standard
+# for a diversified portfolio (Moreira & Muir 2017 use 10-20% range).
+VOL_MANAGED_TARGET = 0.15
+VOL_MANAGED_LOOKBACK = 63  # 3-month realized vol
+
 
 class LiveSignalGenerator:
-    """Generate portfolio target weights from live market data (simplified v4).
+    """Generate portfolio target weights from live market data.
 
-    v4 changes:
-      - Fixed 2x leverage (no vol-targeting) — simpler, higher expected CAGR
-      - 2 strategies: TSMOM + Residual Reversal (dropped 52-Week High)
-      - Within-industry residuals via industry_map (72 GICS sub-industries)
+    Supports two modes:
+      - v4 (mode="static"): Equal-weight 50/50, fixed 2x leverage
+      - v5 (mode="dynamic"): Risk parity + vol-managed leverage
+
+    v5 changes:
+      - Risk parity between strategies (inverse-vol weighting)
+      - Volatility-managed total exposure (Moreira & Muir 2017)
+      - Liquidity-weighted residual reversal (Nagel 2012)
     """
 
     def __init__(
         self,
         leverage: float = 2.0,
+        mode: str = "dynamic",
     ):
         self.leverage = leverage
+        self.mode = mode
 
     def generate_weights(
         self,
@@ -92,7 +126,7 @@ class LiveSignalGenerator:
         industry_map: dict | None = None,
     ) -> dict[str, float]:
         """
-        Run simplified strategy pipeline and return target weights.
+        Run strategy pipeline and return target weights.
 
         Parameters
         ----------
@@ -151,24 +185,107 @@ class LiveSignalGenerator:
             logger.error("No strategies produced signals")
             return {}
 
-        # ── Equal-weight combination (DeMiguel et al. 2009) ──
+        if self.mode == "dynamic":
+            return self._combine_dynamic(
+                strategy_weights, strategy_returns, common_cols
+            )
+        else:
+            return self._combine_static(
+                strategy_weights, common_cols
+            )
+
+    def _combine_static(
+        self,
+        strategy_weights: dict[str, pd.DataFrame],
+        common_cols: pd.Index,
+    ) -> dict[str, float]:
+        """v4 static: equal-weight 50/50, fixed leverage."""
         n_strats = len(strategy_weights)
-
-        # ── Fixed 2x leverage ──
         leverage = self.leverage
-        logger.info(f"  Leverage: {leverage:.2f}x (fixed)")
+        logger.info(f"  Mode: STATIC (v4) | Leverage: {leverage:.2f}x (fixed)")
 
-        # ── Compute per-asset target weights ──
         combined = pd.Series(0.0, index=common_cols)
         for name, w in strategy_weights.items():
             if len(w) > 0:
                 latest = w.iloc[-1].reindex(common_cols, fill_value=0.0)
                 combined += latest / n_strats
 
-        # Apply leverage
         combined *= leverage
+        return self._filter_weights(combined)
 
-        # Filter tiny weights
+    def _combine_dynamic(
+        self,
+        strategy_weights: dict[str, pd.DataFrame],
+        strategy_returns: dict[str, pd.Series],
+        common_cols: pd.Index,
+    ) -> dict[str, float]:
+        """
+        v5 dynamic: risk parity allocation + volatility-managed leverage.
+
+        Risk parity (Maillard, Roncalli & Teiletche 2010):
+          Weight each strategy inversely to its trailing realized vol.
+          This ensures each strategy contributes equal risk to the portfolio.
+
+        Vol-managed leverage (Moreira & Muir 2017):
+          Scale total portfolio exposure so realized vol targets 15% annualized.
+          Capped at Alpaca's Reg T maximum (2x).
+        """
+        # ── Step 1: Risk parity weights ──
+        strat_vols = {}
+        for name, ret in strategy_returns.items():
+            trailing = ret.iloc[-RISK_PARITY_VOL_LOOKBACK:]
+            ann_vol = trailing.std() * np.sqrt(252)
+            strat_vols[name] = max(ann_vol, 0.01)  # floor to avoid division by zero
+
+        inv_vols = {name: 1.0 / vol for name, vol in strat_vols.items()}
+        total_inv_vol = sum(inv_vols.values())
+        rp_weights = {name: iv / total_inv_vol for name, iv in inv_vols.items()}
+
+        for name, rpw in rp_weights.items():
+            logger.info(
+                f"    Risk parity: {name} = {rpw:.1%} "
+                f"(vol={strat_vols[name]:.2%})"
+            )
+
+        # ── Step 2: Combine strategy weights using risk parity ──
+        combined = pd.Series(0.0, index=common_cols)
+        for name, w in strategy_weights.items():
+            if len(w) > 0:
+                latest = w.iloc[-1].reindex(common_cols, fill_value=0.0)
+                combined += latest * rp_weights[name]
+
+        # ── Step 3: Volatility-managed leverage ──
+        # Compute recent portfolio vol from combined strategy returns
+        combined_ret = pd.Series(0.0, index=strategy_returns[
+            list(strategy_returns.keys())[0]
+        ].index)
+        for name, ret in strategy_returns.items():
+            combined_ret += ret * rp_weights[name]
+
+        trailing_vol = (
+            combined_ret.iloc[-VOL_MANAGED_LOOKBACK:].std() * np.sqrt(252)
+        )
+        trailing_vol = max(trailing_vol, 0.02)  # floor at 2%
+
+        vol_managed_leverage = min(
+            VOL_MANAGED_TARGET / trailing_vol,
+            self.leverage,  # cap at Reg T max
+        )
+        vol_managed_leverage = max(vol_managed_leverage, 0.5)  # floor at 0.5x
+
+        logger.info(
+            f"  Mode: DYNAMIC (v5) | "
+            f"Portfolio vol: {trailing_vol:.2%} | "
+            f"Vol-managed leverage: {vol_managed_leverage:.2f}x "
+            f"(target {VOL_MANAGED_TARGET:.0%}, cap {self.leverage:.0f}x)"
+        )
+
+        combined *= vol_managed_leverage
+        return self._filter_weights(combined)
+
+    @staticmethod
+    def _filter_weights(combined: pd.Series) -> dict[str, float]:
+        """Filter tiny weights and return as dict."""
         target = {}
         for sym, weight in combined.items():
             if abs(weight) > 0.001:

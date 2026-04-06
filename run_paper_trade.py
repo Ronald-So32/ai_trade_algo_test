@@ -231,10 +231,10 @@ def cmd_signals(broker, symbols: list[str], lookback_days: int = 504):
         f"{len(prices_wide)} trading days ({elapsed:.1f}s)"
     )
 
-    # Generate signals
-    logger.info("Running strategy pipeline...")
+    # Generate signals (v5: risk parity + vol-managed leverage)
+    logger.info("Running strategy pipeline (v5 dynamic)...")
     t1 = time.time()
-    generator = LiveSignalGenerator(leverage=2.0)
+    generator = LiveSignalGenerator(leverage=2.0, mode="dynamic")
     target_weights = generator.generate_weights(
         prices_wide, returns_wide, industry_map=INDUSTRY_MAP,
     )
@@ -496,10 +496,10 @@ def cmd_auto(broker, symbols: list[str], lookback_days: int, trade_time: str):
                 f"{len(prices_wide)} days ({time.time()-t0:.1f}s)"
             )
 
-            # Generate signals
-            logger.info("Generating signals...")
+            # Generate signals (v5: risk parity + vol-managed leverage)
+            logger.info("Generating signals (v5 dynamic)...")
             t1 = time.time()
-            generator = LiveSignalGenerator(leverage=2.0)
+            generator = LiveSignalGenerator(leverage=2.0, mode="dynamic")
             target_weights = generator.generate_weights(
                 prices_wide, returns_wide, industry_map=INDUSTRY_MAP,
             )
