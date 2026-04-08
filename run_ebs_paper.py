@@ -65,6 +65,21 @@ def load_env():
     return api_key, secret_key
 
 
+def get_vix() -> float | None:
+    """Fetch current VIX level from yfinance."""
+    try:
+        import yfinance as yf
+        vix = yf.Ticker("^VIX")
+        hist = vix.history(period="5d")
+        if not hist.empty:
+            level = float(hist["Close"].iloc[-1])
+            logger.info(f"VIX: {level:.1f}")
+            return level
+    except Exception as e:
+        logger.warning(f"Failed to fetch VIX: {e}")
+    return None
+
+
 def log_trade(trade: dict):
     """Append trade to JSONL log."""
     TRADE_LOG_PATH.parent.mkdir(exist_ok=True)
@@ -140,9 +155,12 @@ def cmd_scan(days_ahead: int = 7):
     for event in upcoming:
         logger.info(f"  {event['ticker']:6s} — {event['earnings_date']}")
 
+    # Fetch VIX for regime-aware sizing
+    vix = get_vix()
+
     # Generate signals
     logger.info("\nGenerating signals...")
-    signals = generate_signals(model, upcoming, capital=100_000.0)
+    signals = generate_signals(model, upcoming, capital=100_000.0, vix_level=vix)
 
     if not signals:
         logger.info("No signals generated (all below threshold).")
@@ -165,7 +183,7 @@ def cmd_trade(days_ahead: int = 7):
     """Generate signals and submit put orders to Alpaca."""
     from qrt.ebs.signal_generator import EBSModel, get_upcoming_earnings, generate_signals
     from qrt.ebs.options_broker import OptionsBroker
-    from ebs.risk import check_concurrent_positions
+    from qrt.ebs.risk import check_concurrent_positions
 
     logger.info("=" * 60)
     logger.info("EBS PAPER TRADING — EXECUTE")
@@ -203,10 +221,14 @@ def cmd_trade(days_ahead: int = 7):
         logger.info("No upcoming earnings.")
         return
 
+    # Fetch VIX
+    vix = get_vix()
+
     # Generate signals
     signals = generate_signals(
         model, upcoming, capital=capital,
         equity_curve=[capital],
+        vix_level=vix,
     )
     if not signals:
         logger.info("No signals above threshold.")
@@ -318,12 +340,82 @@ def cmd_status():
             )
 
 
+def cmd_auto(days_ahead: int = 7, check_hour: int = 9, check_minute: int = 0):
+    """Run autonomously: check for earnings daily and trade.
+
+    Runs in a loop, checking once per day at the specified time (ET).
+    If there are upcoming earnings with signals above threshold,
+    submits put orders automatically.
+
+    Designed to run as a background process:
+        nohup python run_ebs_paper.py auto &
+    """
+    from zoneinfo import ZoneInfo
+
+    logger.info("=" * 60)
+    logger.info("EBS AUTO MODE — Autonomous Daily Trading")
+    logger.info(f"Check time: {check_hour:02d}:{check_minute:02d} ET")
+    logger.info(f"Scan window: {days_ahead} days ahead")
+    logger.info("=" * 60)
+
+    et = ZoneInfo("America/New_York")
+    traded_today = None
+
+    while True:
+        try:
+            now = datetime.now(et)
+            today_str = now.strftime("%Y-%m-%d")
+
+            # Check if it's time to trade
+            is_trade_time = (
+                now.hour == check_hour
+                and now.minute >= check_minute
+                and now.minute < check_minute + 30
+                and now.weekday() < 5  # Mon-Fri
+                and traded_today != today_str
+            )
+
+            if is_trade_time:
+                logger.info(f"\n{'='*60}")
+                logger.info(f"AUTO CHECK: {now.strftime('%Y-%m-%d %H:%M ET')}")
+                logger.info(f"{'='*60}")
+
+                try:
+                    cmd_trade(days_ahead=days_ahead)
+                    traded_today = today_str
+                    logger.info(f"Trade check complete for {today_str}")
+                except Exception as e:
+                    logger.error(f"Trade execution failed: {e}")
+                    import traceback
+                    traceback.print_exc()
+
+                # Retrain model weekly (Mondays)
+                if now.weekday() == 0:
+                    logger.info("Monday — retraining model...")
+                    try:
+                        cmd_retrain()
+                    except Exception as e:
+                        logger.warning(f"Retrain failed: {e}")
+
+            # Sleep 5 minutes between checks
+            time.sleep(300)
+
+        except KeyboardInterrupt:
+            logger.info("Auto mode stopped by user.")
+            break
+        except Exception as e:
+            logger.error(f"Unexpected error in auto loop: {e}")
+            time.sleep(60)
+
+
 def main():
     parser = argparse.ArgumentParser(description="EBS Options Paper Trading")
-    parser.add_argument("command", choices=["scan", "trade", "status", "retrain"],
+    parser.add_argument("command", choices=["scan", "trade", "status", "retrain", "auto"],
                         help="Command to run")
     parser.add_argument("--days", type=int, default=7,
                         help="Days ahead to scan for earnings (default: 7)")
+    parser.add_argument("--check-hour", type=int, default=9,
+                        help="Hour (ET) to check for trades in auto mode (default: 9)")
     args = parser.parse_args()
 
     if args.command == "retrain":
@@ -334,6 +426,8 @@ def main():
         cmd_trade(days_ahead=args.days)
     elif args.command == "status":
         cmd_status()
+    elif args.command == "auto":
+        cmd_auto(days_ahead=args.days, check_hour=args.check_hour)
 
 
 if __name__ == "__main__":

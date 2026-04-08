@@ -266,7 +266,7 @@ class EBSModel:
         X_scaled = np.nan_to_num(X_scaled, nan=0.0, posinf=0.0, neginf=0.0)
         return self.model.predict_proba(X_scaled)[:, 1]
 
-    def save(self, path: Path):
+    def save(self, path: Path | str):
         """Persist model + scaler to disk."""
         state = {
             "model": self.model,
@@ -279,8 +279,9 @@ class EBSModel:
             pickle.dump(state, f)
         logger.info(f"Model saved: {path} ({self.n_train_events} events)")
 
-    def load(self, path: Path) -> bool:
+    def load(self, path: Path | str) -> bool:
         """Load model from disk. Returns True if successful."""
+        path = Path(path)
         if not path.exists():
             return False
         try:
@@ -357,12 +358,7 @@ def generate_signals(
     Returns:
         List of EBSSignal objects, sorted by pred_prob descending.
     """
-    # Import risk sizing from earnings_black_swan
-    import sys
-    ebs_path = Path(__file__).parent.parent.parent.parent / "earnings_black_swan"
-    if ebs_path.exists():
-        sys.path.insert(0, str(ebs_path))
-    from ebs.risk import compute_position_size
+    from qrt.ebs.risk import compute_position_size
 
     signals = []
     equity_curve = equity_curve or [capital]
